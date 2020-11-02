@@ -6,6 +6,17 @@ matrix:
   include:
     # clang-tidy/format specific job
     - os: linux
+      arch: amd64 
+      sudo: false
+      env: CLANG_FORMAT
+      addons:
+        apt:
+          sources: [ 'ubuntu-toolchain-r-test' ]
+          packages: [ 'libstdc++6', 'libstdc++-5-dev' ]
+      script:
+        - make format
+    - os: linux
+      arch: ppc64le
       sudo: false
       env: CLANG_FORMAT
       addons:
